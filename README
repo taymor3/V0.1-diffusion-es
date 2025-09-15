@@ -1,14 +1,8 @@
 # Collision Avoidance Project – Phase 0/1 (Toy Data)
 
-This repository implements the first building blocks for a **multi-agent trajectory prediction and evaluation pipeline**.  
-The goal is to test ideas quickly on **synthetic toy data** before integrating large-scale datasets (Waymo, nuPlan, etc.):contentReference[oaicite:0]{index=0}.
+This repository implements the first building blocks for a multi-agent trajectory prediction and evaluation pipeline.  
+The goal is to test ideas quickly on **synthetic toy data** before integrating large-scale datasets (Waymo, nuPlan, etc.)
 
----
-
-## 📂 Project Structure
-
-
----
 
 ## 🔧 Modules and Functions
 
@@ -43,7 +37,7 @@ The goal is to test ideas quickly on **synthetic toy data** before integrating l
 
 ---
 
-### `notebooks/01_toy_data.ipynb`
+### `01_toy_data.ipynb`
 Demo notebook that ties everything together:
 1. Generate a toy batch with `make_toy_batch`.  
 2. Visualize trajectories with `plot_scene`.  

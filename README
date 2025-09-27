@@ -1,68 +1,9 @@
-# Collision Avoidance Project – Phase 0/1 (Toy Data)
-
-This repository implements the first building blocks for a multi-agent trajectory prediction and evaluation pipeline.  
-The goal is to test ideas quickly on **synthetic toy data** before integrating large-scale datasets (Waymo, nuPlan, etc.)
-
-
-## 🔧 Modules and Functions
-
-### `utils/preprocessing.py`
-- **`make_toy_batch(num_scenes, agents_per_scene, T_past, T_future, seed)`**  
-  Creates synthetic multi-agent trajectories.  
-  - Returns `{"past": (S,A,T_past,2), "future": (S,A,T_future,2)}`.  
-  - Used to quickly test models and metrics without real datasets.
-
----
-
-### `visualize/plot.py`
-- **`plot_scene(past, future, title)`**  
-  Plots dashed **past** and solid **future** trajectories for all agents in a scene.  
-  Useful for sanity-checking generated or predicted trajectories.
-
----
-
-### `models/baselines.py`
-- **`predict_cv(past, T_future)`**  
-  Constant-Velocity baseline.  
-  - Extrapolates each agent’s last observed velocity into the future.  
-  - Simple but often causes collisions (since agents ignore each other).
-
----
-
-### `evaluation/metrics.py`
-- **`rmse(pred, gt)`**  
-  Computes Root Mean Square Error between predicted and ground-truth future positions.
-- **`count_collisions(traj, radius=0.5)`**  
-  Counts timesteps where any two agents come within a collision radius.
-
----
-
-### `01_toy_data.ipynb`
-Demo notebook that ties everything together:
-1. Generate a toy batch with `make_toy_batch`.  
-2. Visualize trajectories with `plot_scene`.  
-3. Predict futures with `predict_cv`.  
-4. Evaluate with `rmse` and `count_collisions`.  
-
-Example output:
-RMSE: 0.51
-Collisions (pred): 1
-Collisions (gt): 0
-
-
----
-
-## 🚀 Next Steps
-- Replace `make_toy_batch` with a real dataset loader (Waymo / nuPlan).  
-- Add more baselines (PID, MPC-lite).  
-- Prototype a diffusion-based predictor.  
-- Expand evaluation metrics (average displacement error, collision-free %).
-
----
-
-## 📝 Notes
-- Environment: Python 3.9+, PyTorch, NumPy, Pandas, Matplotlib:contentReference[oaicite:1]{index=1}.  
-- Run everything inside the `diffusion-es` conda environment.  
-- This repo currently supports **toy experiments only** — integration with real datasets will follow in Phase 2.
-
----
+copy all of the repo into your local vm.
+download all the environment package in the nuplan devkit.
+download minisplit and maps from nuplan database
+store them in the bashrc
+export NUPLAN_DATA_ROOT=$HOME/data1/nuplan-v1.1/splits/mini
+export NUPLAN_MAPS_ROOT=$HOME/data1/maps
+after that update the o1_toy_data.ipynb
+to make the places of the database right
+after that run the cell in the jupyter you should see the whole senarios of the database.

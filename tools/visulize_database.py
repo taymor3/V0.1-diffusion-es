@@ -31,5 +31,4 @@ def visualize_database(bokeh_port = 8899 , data_root = None, map_root = None, ma
         map_version=NUPLAN_MAP_VERSION,
         bokeh_port=bokeh_port
     )
-# <-- set YOUR paths -->
 

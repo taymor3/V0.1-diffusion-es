@@ -37,24 +37,100 @@ from tutorials.utils.tutorial_utils import (
     get_default_scenario_from_token,
     visualize_scenario,
 )
-
-# 14 canonical families (non-overlapping alias sets)
-CANONICAL_14: Dict[str, set] = {
-    "turn_left": {"turn_left","left_turn","starting_left_turn","traversing_left_turn","left_turn_intersection"},
-    "turn_right": {"turn_right","right_turn","starting_right_turn","traversing_right_turn","right_turn_intersection"},
-    "straight_through_intersection": {"traversing_intersection","on_intersection","on_traffic_light_intersection"},
-    "lane_change_left": {"lane_change_left","left_lane_change"},
-    "lane_change_right": {"lane_change_right","right_lane_change"},
-    "stop_for_red_light": {"red_light","red_light_visible","on_stopline_traffic_light"},
-    "go_on_green": {"green_light","starting_straight_traffic_light_intersection_traversal"},
-    "yield_to_pedestrian": {"near_pedestrian_on_crosswalk","traversing_crosswalk","near_pedestrian_at_pickup_dropoff"},
-    "merge": {"merge","merging_into_lane"},
-    "cut_in": {"cut_in","near_long_vehicle","near_high_speed_vehicle"},
-    "car_following": {"stationary_in_traffic","stationary","slow_traffic"},
-    "pickup_dropoff": {"on_pickup_dropoff","traversing_pickup_dropoff","near_pickup_dropoff"},
-    "construction_zone": {"near_construction_zone_sign","construction","near_trafficcone_on_driveable"},
-    "speed_events": {"high_magnitude_speed","medium_magnitude_speed","low_magnitude_speed"},
+# To be modified
+# Canonical 14 → scenario-type tags observed in your screenshots
+CANONICAL_14: dict[str, set[str]] = {
+    "turn_left": {
+        "starting_left_turn",
+    },
+    "turn_right": {
+        "starting_right_turn",
+    },
+    "straight_through_intersection": {
+        "traversing_intersection",
+        "traversing_traffic_light_intersection",
+        "on_intersection",
+        "on_all_way_stop_intersection",
+        "on_traffic_light_intersection",
+        "starting_straight_stop_sign_intersection_traversal",
+        "starting_straight_traffic_light_intersection_traversal",
+        "on_stopline_stop_sign",
+        "accelerating_at_stop_sign",
+        "accelerating_at_stop_sign_no_crosswalk",
+        "stopping_at_stop_sign_with_lead",
+        "stopping_at_stop_sign_without_lead",
+        "stopping_at_stop_sign_no_crosswalk",
+    },
+    "lane_change_left": {
+        "changing_lane_to_left",
+    },
+    "lane_change_right": {
+        "changing_lane_to_right",
+    },
+    "stop_for_red_light": {
+        "on_stopline_traffic_light",
+        "stationary_at_traffic_light_with_lead",
+        "stationary_at_traffic_light_without_lead",
+        "stopping_at_traffic_light_with_lead",
+        "stopping_at_traffic_light_without_lead",
+    },
+    "go_on_green": {
+        "accelerating_at_traffic_light",
+        "accelerating_at_traffic_light_with_lead",
+        "accelerating_at_traffic_light_without_lead",
+        "starting_straight_traffic_light_intersection_traversal",
+    },
+    "yield_to_pedestrian": {
+        "near_pedestrian_on_crosswalk",
+        "near_pedestrian_on_crosswalk_with_ego",
+        "stationary_at_crosswalk",
+        "stopping_at_crosswalk",
+        "traversing_crosswalk",
+        "waiting_for_pedestrian_to_cross",
+        "on_stopline_crosswalk",
+        "accelerating_at_crosswalk",
+        "behind_pedestrian_on_driveable",
+        "near_pedestrian_at_pickup_dropoff",
+        "near_multiple_pedestrians",
+    },
+    "cut_in": {
+        "near_long_vehicle",
+        "near_high_speed_vehicle",
+        "near_multiple_vehicles",
+        "behind_long_vehicle",
+    },
+    "car_following": {
+        "stationary_in_traffic",
+        "stationary",
+        "following_lane_with_lead",
+        "following_lane_with_slow_lead",
+        "following_lane_without_lead",
+        "stopping_with_lead",
+        "behind_bike",
+    },
+    "pickup_dropoff": {
+        "on_pickup_dropoff",
+        "traversing_pickup_dropoff",
+        "behind_pedestrian_on_pickup_dropoff",
+        "near_pedestrian_at_pickup_dropoff",
+        "on_carpark",
+    },
+    "construction_zone": {
+        "near_construction_zone_sign",
+        "near_trafficcone_on_driveable",
+        "near_barrier_on_driveable",
+        "traversing_narrow_lane",
+    },
+    "speed_events": {
+        "high_magnitude_speed",
+        "medium_magnitude_speed",
+        "low_magnitude_speed",
+        "high_magnitude_jerk",
+        "high_lateral_acceleration",
+    },
 }
+
+
 
 
 def _index_family_examples(data_root: str) -> Dict[str, List[Tuple[str, str, str]]]:
